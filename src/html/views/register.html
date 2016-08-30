@@ -1,0 +1,21 @@
+<script>/**@type{RegisterController}*/var regCtrl;</script>
+<div class="row">
+    <div class="col-lg-4 col-lg-offset-4">
+        <h1 class="text-muted">Register</h1>
+        <form name="register" class="form-horizontal" ng-submit="regCtrl.register()">
+            <div class="form-group">
+                <input class="form-control" type="text" ng-model="regCtrl.username" placeholder="Username" autofocus required>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="email" ng-model="regCtrl.email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="password" ng-model="regCtrl.password" placeholder="Password" required>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-default pull-left" ng-click="regCtrl.cancel()">Cancel</button>
+                <button type="submit" class="btn btn-success pull-right" ng-disabled="register.$invalid">Register now</button>
+            </div>
+        </form>
+    </div>
+</div>
