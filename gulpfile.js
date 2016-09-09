@@ -1,20 +1,24 @@
 var elixir = require("laravel-elixir");
 require("laravel-elixir-livereload");
 
-elixir(function(mix){
+elixir((mix) => {
 
     // Babel configuration
-    var config = elixir.config.js.browserify.transformers.find(transformer => transformer.name === 'babelify');
+    var babelConfig = elixir.config.js.browserify.transformers.find(transformer => transformer.name === 'babelify');
     // config.options.plugins = ["babel-plugin-transform-decorators-legacy"];
-    config.options.presets = ["es2015", "stage-2"];
+    babelConfig.options.presets = ["es2015", "stage-2"];
 
+    //Transpile JS
     mix.browserify('./src/js/Workshop.js');
 
+    //Compile sass
     mix.sass('./src/sass/workshop.scss', undefined, undefined, {
         includePaths : ['node_modules']
     });
 
+    //Copy html
     mix.copy('./src/html', './public');
 
+    //Livereload
     mix.livereload();
 });
